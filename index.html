@@ -17,7 +17,7 @@
     const post = await fetch('http://127.0.0.1:3000/protected_endpoint',{
         method: 'POST',
         headers: {
-            // 'x-csrf-token':token, // comment this line to throw an error.
+            'x-csrf-token':token, // comment this line to throw an error.
             'Content-Type':'application/json',
         },
         body: JSON.stringify({
