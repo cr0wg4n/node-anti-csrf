@@ -8,17 +8,9 @@
     "start": "nodemon ./src",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/cr0wg4n/node-anti-csrf.git"
-  },
   "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/cr0wg4n/node-anti-csrf/issues"
-  },
-  "homepage": "https://github.com/cr0wg4n/node-anti-csrf#readme",
+  "author": "Mauricio Matias",
+  "license": "MIT",
   "devDependencies": {
     "dotenv": "^16.0.2",
     "nodemon": "^2.0.20"
