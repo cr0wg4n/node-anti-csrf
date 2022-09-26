@@ -14,25 +14,33 @@ import {
 } from './config.js';
 
 const app = express();
+app.use(express.json());
 
 const {
+    invalidCsrfTokenError,
     generateToken,
     doubleCsrfProtection
 } = doubleCsrf({
     secret:CSRF_SECRET,
     cookieName:CSRF_COOKIE_NAME,
     cookieOptions:{
-        sameSite:false,
-        httpOnly:false,
-        secure:false,
-        signed:false
+        sameSite:'strict',
+        httpOnly:true,
+        secure:true,
     },
     size:64,
     ignoredMethods:['GET','HEAD','OPTIONS'],
 });
 
 app.use(cookieParser(COOKIES_SECRET));
-// app.use(cors());
+
+const csrfErrorHandler = (error,req,res,next) => {
+    if(error==invalidCsrfTokenError){
+        res.status(403).json({error:'csrf validation error'});
+    }else{
+        next();
+    }
+};
 
 app.get('/',function(req,res){
     res.sendFile(path.join(__dirname,'../','index.html'));
@@ -44,12 +52,14 @@ app.get('/csrf-token',(req,res)=>{
     });
 });
 
-app.post('/protected_endpoint',doubleCsrfProtection,(req,res)=>{
+app.post('/protected_endpoint',doubleCsrfProtection,csrfErrorHandler,(req,res)=>{
+    console.log(req.body);
     res.json({protected_endpoint:'form processed successfully'});
 });
 
-// try with a HTTP client
+// try with a HTTP client (is not protected from a CSRF attack)
 app.post('/unprotected_endpoint',(req,res)=>{
+    console.log(req.body);
     res.json({unprotected_endpoint:'form processed successfully'});
 });
 

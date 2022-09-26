@@ -2,6 +2,8 @@
 
 ## Run 
 
+Copy the `.env.example` file to `.env` file and try.
+
 ```sh
 npm run start
 ```

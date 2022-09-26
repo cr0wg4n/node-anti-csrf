@@ -12,20 +12,21 @@
 <script type="module">
     const response = await fetch('http://127.0.0.1:3000/csrf-token');
     const { token } = await response.json();
+    console.log(token);
 
     const post = await fetch('http://127.0.0.1:3000/protected_endpoint',{
         method: 'POST',
         headers: {
-            'x-csrf-token':token
-        }
+            // 'x-csrf-token':token, // comment this line to throw an error.
+            'Content-Type':'application/json',
+        },
+        body: JSON.stringify({
+            name:'mauricio',
+            id:'xasd2312x2ñljkasdas'
+        })
     })
     const app = document.getElementById('app');
-    try {
-        const data = JSON.stringify(await post.json());
-        app.innerHTML = `<code>${data}</code>`
-    } catch (error) {
-        console.log(error);
-        app.innerHTML = `<code>ERROR</code>`
-    }
+    const data = JSON.stringify(await post.json());
+    app.innerHTML = `<code>${data}</code>`
 </script>
 </html>
