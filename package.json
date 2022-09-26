@@ -1,0 +1,30 @@
+{
+  "name": "anti-csrf",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "nodemon ./src",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cr0wg4n/node-anti-csrf.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cr0wg4n/node-anti-csrf/issues"
+  },
+  "homepage": "https://github.com/cr0wg4n/node-anti-csrf#readme",
+  "devDependencies": {
+    "nodemon": "^2.0.20"
+  },
+  "dependencies": {
+    "csrf-sync": "^1.0.3",
+    "express": "^4.18.1",
+    "express-session": "^1.17.3"
+  }
+}
