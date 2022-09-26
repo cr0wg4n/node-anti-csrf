@@ -19,8 +19,13 @@
             'x-csrf-token':token
         }
     })
-    const data = JSON.stringify(await post.json());
     const app = document.getElementById('app');
-    app.innerHTML = `<code>${data}</code>`
+    try {
+        const data = JSON.stringify(await post.json());
+        app.innerHTML = `<code>${data}</code>`
+    } catch (error) {
+        console.log(error);
+        app.innerHTML = `<code>ERROR</code>`
+    }
 </script>
 </html>

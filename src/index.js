@@ -45,11 +45,12 @@ app.get('/csrf-token',(req,res)=>{
 });
 
 app.post('/protected_endpoint',doubleCsrfProtection,(req,res)=>{
-    res.json({message:'form processed successfully'});
+    res.json({protected_endpoint:'form processed successfully'});
 });
 
+// try with a HTTP client
 app.post('/unprotected_endpoint',(req,res)=>{
-    res.json({message:'form processed successfully'});
+    res.json({unprotected_endpoint:'form processed successfully'});
 });
 
 app.listen(PORT,()=>{
