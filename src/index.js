@@ -43,7 +43,7 @@ const csrfErrorHandler = (error,req,res,next) => {
 };
 
 app.get('/',function(req,res){
-    res.sendFile(path.join(__dirname,'../','index.html'));
+    res.sendFile(path.join(__dirname,'index.html'));
 });
 
 app.get('/csrf-token',(req,res)=>{
