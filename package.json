@@ -20,11 +20,12 @@
   },
   "homepage": "https://github.com/cr0wg4n/node-anti-csrf#readme",
   "devDependencies": {
+    "dotenv": "^16.0.2",
     "nodemon": "^2.0.20"
   },
   "dependencies": {
-    "csrf-sync": "^1.0.3",
-    "express": "^4.18.1",
-    "express-session": "^1.17.3"
+    "cookie-parser": "^1.4.6",
+    "csrf-csrf": "^1.0.3",
+    "express": "^4.18.1"
   }
 }

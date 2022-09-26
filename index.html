@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anti-CSRF</title>
+</head>
+<body>
+    <div id="app"></div>
+</body>
+<script type="module">
+    const response = await fetch('http://127.0.0.1:3000/csrf-token');
+    const { token } = await response.json();
+
+    const post = await fetch('http://127.0.0.1:3000/protected_endpoint',{
+        method: 'POST',
+        headers: {
+            'x-csrf-token':token
+        }
+    })
+    const data = JSON.stringify(await post.json());
+    const app = document.getElementById('app');
+    app.innerHTML = `<code>${data}</code>`
+</script>
+</html>
