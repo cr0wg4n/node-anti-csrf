@@ -21,6 +21,7 @@ const {
     generateToken,
     doubleCsrfProtection
 } = doubleCsrf({
+    getSecret:(req)=>req.secret,
     secret:CSRF_SECRET,
     cookieName:CSRF_COOKIE_NAME,
     cookieOptions:{
